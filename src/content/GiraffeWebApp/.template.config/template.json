@@ -1,0 +1,12 @@
+{
+  "author": "Morgan Kenyon",
+  "classifications": [ "Web", "Giraffe", "ASP.NET" ],
+  "identity": "GiraffeWebAppTemplate",
+  "name": "GiraffeWebApp",
+  "shortName": "giraffewebapp",
+  "sourceName":"GiraffeWA",
+  "tags": {
+    "language": "F#",
+    "type": "project"
+  }
+}
