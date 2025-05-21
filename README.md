@@ -36,7 +36,7 @@ To install template from source:
 * Navigate to `src/content/GiraffeWebApp/`
 * Run `dotnet new install ./` to install template
 * Create project from template
-  * `dotnet new consoleasync --n MyProject`
+  * `dotnet new giraffewebtemplate --n MyProject`
 
 To uninstall template:
 * Navigate to `src/content/GiraffeWebApp/`
