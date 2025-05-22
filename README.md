@@ -29,6 +29,10 @@ Principles are roughly in order of importance.
 * [Giraffe.ViewEngine](https://github.com/giraffe-fsharp/Giraffe.ViewEngine) for UI
 * [SimpleCSS](https://simplecss.org/) for styling
 
+## How to Generate
+
+TBD - still working on getting everything set and then will publish to nuget for usage.
+
 ## Testing the Template
 
 To install template from source:
