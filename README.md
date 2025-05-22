@@ -27,7 +27,7 @@ Principles are roughly in order of importance.
 * [DbUp](https://github.com/DbUp/DbUp) for database migrations
 * [Dapper](https://github.com/DapperLib/Dapper) to handle DB queries
 * [Giraffe.ViewEngine](https://github.com/giraffe-fsharp/Giraffe.ViewEngine) for UI
-* [PicoCSS](https://picocss.com/) for styling
+* [SimpleCSS](https://simplecss.org/) for styling
 
 ## Testing the Template
 

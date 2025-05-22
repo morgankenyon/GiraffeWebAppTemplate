@@ -1,3 +1,3 @@
-﻿--This first script assumes a DB called "gitter" exists
+﻿--This first script assumes a DB called "GiraffeWA_DB" exists
 
-CREATE SCHEMA IF NOT EXISTS dbo;
+CREATE SCHEMA IF NOT EXISTS db_schema;

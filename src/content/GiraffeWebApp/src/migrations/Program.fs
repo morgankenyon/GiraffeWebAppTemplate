@@ -5,7 +5,7 @@ open DbUp
 [<EntryPoint>]
 let main args =
     let connStr =
-        "Host=localhost;Username=postgres;Password=password123;Database=gitter"
+        "Host=localhost;Username=postgres;Password=password123;Database=GiraffeWA_DB"
 
     let upgrader =
         DeployChanges

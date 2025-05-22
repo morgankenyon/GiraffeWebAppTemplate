@@ -8,5 +8,24 @@
   "tags": {
     "language": "F#",
     "type": "project"
+  },
+  "symbols": {
+    "DbName": {
+      "type": "parameter",
+      "description": "Name of Postgres DB",
+      "datatype": "text",
+      "replaces": "GiraffeWA_DB",
+      "fileRename": "GiraffeWA_DB",
+      "defaultValue": "webapp_db"
+    },
+    "DbSchema": {
+      "type": "parameter",
+      "description": "The db schema used for this app",
+      "datatype": "text",
+      "replaces": "db_schema",
+      "fileRename": "db_schema",
+      "defaultValue": "dbo"
+
+    }
   }
 }
