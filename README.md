@@ -1,23 +1,23 @@
-# GiraffeWebAppTemplate
+# Giraffe WebApp Template
 
 An opinionated full stack .NET template for the Giraffe F# framework.
 
 ## Guiding Princples
 
+_In rough order of priority_
+
 * Choose boring tech
   * UI is driven by HTML (via Giraffe.ViewEngine)
   * Limited Javascript
 * Lean into functional paradigms
-  * Limit use of denpendency injection
+  * Limit use of dependency injection
   * Limit use of classes/OO principles
 * An onion-y architecture
   * IO happens at Handler levels
   * Keep business logic pure
 * Stay close to the .NET ecosystem
   * Mimic how things are already done in C#/ASP.NET Core
-  * If you're confused about something, ideally searching for the way C# does it would get you halfway there.
-
-Principles are roughly in order of importance.
+  * If you're confused about something, ideally searching for the way C# does it would help you out.
 
 ## Technology Choices
 
@@ -29,11 +29,28 @@ Principles are roughly in order of importance.
 * [Giraffe.ViewEngine](https://github.com/giraffe-fsharp/Giraffe.ViewEngine) for UI
 * [SimpleCSS](https://simplecss.org/) for styling
 
-## How to Generate
+## How to Install
 
-TBD - still working on getting everything set and then will publish to nuget for usage.
+Run the following command on in a CLI:
 
-## Testing the Template
+```
+dotnet new install "GiraffeWebApp.Templates::*"
+```
+
+## How to Use
+
+When creating a template, pass the following information:
+
+* `--name` - the name for your project
+* `--DbName` - the name of your database
+* `--DbSchema` - the name of your db schema
+
+Sample command:
+```
+dotnet new giraffewebapp --name Gitt --DbName gitt --DbSchema dev
+```
+
+## Testing the Template Locally
 
 To install template from source:
 
