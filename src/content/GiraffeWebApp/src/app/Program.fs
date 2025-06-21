@@ -1,53 +1,20 @@
 module GiraffeWA.App
 
-open System
-open System.IO
+open Giraffe
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Cors.Infrastructure
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
-open Giraffe
+open Models
+open System
+open System.IO
+open Options
+open Microsoft.Extensions.Configuration
 
 // ---------------------------------
-// Models
-// ---------------------------------
-
-type Message =
-    {
-        Text : string
-    }
-
-// ---------------------------------
-// Views
-// ---------------------------------
-
-module Views =
-    open Giraffe.ViewEngine
-
-    let layout (content: XmlNode list) =
-        html [] [
-            head [] [
-                title []  [ encodedText "GiraffeWA" ]
-                link [ _rel  "stylesheet"
-                       _type "text/css"
-                       _href "/main.css" ]
-            ]
-            body [] content
-        ]
-
-    let partial () =
-        h1 [] [ encodedText "GiraffeWA" ]
-
-    let index (model : Message) =
-        [
-            partial()
-            p [] [ encodedText model.Text ]
-        ] |> layout
-
-// ---------------------------------
-// Web app
+// Handlers
 // ---------------------------------
 
 let indexHandler (name : string) =
@@ -56,6 +23,12 @@ let indexHandler (name : string) =
     let view      = Views.index model
     htmlView view
 
+let errorHandler (ex : Exception) (logger : ILogger) =
+    logger.LogError(ex, "An unhandled exception has occurred while executing the request.")
+    clearResponse >=> setStatusCode 500 >=> text ex.Message
+// ---------------------------------
+// Routing
+// ---------------------------------
 let webApp =
     choose [
         GET >=>
@@ -66,16 +39,9 @@ let webApp =
         setStatusCode 404 >=> text "Not Found" ]
 
 // ---------------------------------
-// Error handler
-// ---------------------------------
-
-let errorHandler (ex : Exception) (logger : ILogger) =
-    logger.LogError(ex, "An unhandled exception has occurred while executing the request.")
-    clearResponse >=> setStatusCode 500 >=> text ex.Message
-
-// ---------------------------------
 // Config and Main
 // ---------------------------------
+Dapper.DefaultTypeMap.MatchNamesWithUnderscores <- true
 
 let configureCors (builder : CorsPolicyBuilder) =
     builder
@@ -106,6 +72,16 @@ let configureLogging (builder : ILoggingBuilder) =
     builder.AddConsole()
            .AddDebug() |> ignore
 
+let configureConfigOptions (context: WebHostBuilderContext) (services: IServiceCollection) =
+    services.Configure<DatabaseOptions>(context.Configuration.GetSection(DatabaseOptions.Database)) |> ignore
+
+let configureAppConfiguration (context: WebHostBuilderContext) (config: IConfigurationBuilder) =
+    config
+        .AddJsonFile("appsettings.json", false, true)
+        .AddJsonFile(sprintf "appsettings.%s.json" context.HostingEnvironment.EnvironmentName, true)
+        .AddEnvironmentVariables()
+    |> ignore
+
 [<EntryPoint>]
 let main args =
     let contentRoot = Directory.GetCurrentDirectory()
@@ -116,8 +92,10 @@ let main args =
                 webHostBuilder
                     .UseContentRoot(contentRoot)
                     .UseWebRoot(webRoot)
+                    .ConfigureAppConfiguration(configureAppConfiguration)
                     .Configure(Action<IApplicationBuilder> configureApp)
                     .ConfigureServices(configureServices)
+                    .ConfigureServices(Action<WebHostBuilderContext, IServiceCollection> configureConfigOptions)
                     .ConfigureLogging(configureLogging)
                     |> ignore)
         .Build()

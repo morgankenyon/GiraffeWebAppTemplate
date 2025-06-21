@@ -15,9 +15,8 @@ _In rough order of priority_
 * An onion-y architecture
   * IO happens at Handler levels
   * Keep business logic pure
-* Stay close to the .NET ecosystem
-  * Mimic how things are already done in C#/ASP.NET Core
-  * If you're confused about something, ideally searching for the way C# does it would help you out.
+* Stay close to the ASP.NET Core convention
+  * If you're confused about how something works in F#/Giraffe, ideally searching for the way C#/ASP.Net Core does it would help you out.
 
 ## Technology Choices
 
