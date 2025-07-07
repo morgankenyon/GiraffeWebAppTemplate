@@ -4,14 +4,14 @@ open Giraffe
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Cors.Infrastructure
 open Microsoft.AspNetCore.Hosting
+open Microsoft.Extensions.Configuration
+open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging
-open Microsoft.Extensions.DependencyInjection
 open Models
+open Options
 open System
 open System.IO
-open Options
-open Microsoft.Extensions.Configuration
 
 // ---------------------------------
 // Handlers
