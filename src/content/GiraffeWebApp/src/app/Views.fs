@@ -1,7 +1,12 @@
 ﻿module GiraffeWA.Views
 
 open Giraffe.ViewEngine
+open Giraffe.ViewEngine.Htmx
 open Models
+
+module Partials =
+    let homePartial () =
+        div [] [ str "Home partial Hello"]
 
 let layout (content: XmlNode list) =
     html [] [
@@ -11,14 +16,15 @@ let layout (content: XmlNode list) =
                    _type "text/css"
                    _href "/main.css" ]
         ]
-        body [] content
+        body [] [
+            div [] content
+            script [ _src "htmx.min.js" ] []
+        ]
     ]
-
-let partial () =
-    h1 [] [ encodedText "GiraffeWA" ]
 
 let index (model : Message) =
     [
-        partial()
+        h1 [] [ encodedText "GiraffeWA" ]
         p [] [ encodedText model.Text ]
+        div [ _hxGet "/homePartial"; _hxTrigger "load" ] [ str "Loading" ]
     ] |> layout

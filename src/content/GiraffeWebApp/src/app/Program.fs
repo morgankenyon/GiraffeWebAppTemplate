@@ -35,6 +35,7 @@ let webApp =
             choose [
                 route "/" >=> indexHandler "world"
                 routef "/hello/%s" indexHandler
+                route "/homePartial" >=> htmlView (Views.Partials.homePartial())
             ]
         setStatusCode 404 >=> text "Not Found" ]
 

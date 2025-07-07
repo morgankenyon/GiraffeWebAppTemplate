@@ -9,8 +9,9 @@ An opinionated full stack .NET template for the Giraffe F# framework.
 _In rough order of priority_
 
 * Choose boring tech
-  * UI is driven by HTML (via Giraffe.ViewEngine)
+  * UI is driven by HTML (via [Giraffe.ViewEngine](https://www.nuget.org/packages/Giraffe.ViewEngine/))
   * Limited Javascript
+  * Using htmx for interactivity (via [Giraffe.ViewEngine.Htmx](https://www.nuget.org/packages/Giraffe.ViewEngine.Htmx/))
 * Lean into functional paradigms
   * Limit use of dependency injection
   * Limit use of classes/OO principles
