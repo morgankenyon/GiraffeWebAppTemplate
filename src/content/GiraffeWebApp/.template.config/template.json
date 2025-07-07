@@ -27,5 +27,12 @@
       "defaultValue": "dbo"
 
     }
-  }
+  },
+  "sources": [
+    {
+      "modifiers": {
+        "exclude": [ ".vs/**/*" ]
+      }
+    }
+  ]
 }
