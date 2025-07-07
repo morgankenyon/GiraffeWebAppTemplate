@@ -6,7 +6,7 @@ open Models
 let layout (content: XmlNode list) =
     html [] [
         head [] [
-            title []  [ encodedText "Gitt" ]
+            title []  [ encodedText "GiraffeWA" ]
             link [ _rel  "stylesheet"
                    _type "text/css"
                    _href "/main.css" ]
@@ -15,7 +15,7 @@ let layout (content: XmlNode list) =
     ]
 
 let partial () =
-    h1 [] [ encodedText "Gitt" ]
+    h1 [] [ encodedText "GiraffeWA" ]
 
 let index (model : Message) =
     [

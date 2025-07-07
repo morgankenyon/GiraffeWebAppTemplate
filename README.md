@@ -1,5 +1,7 @@
 # Giraffe WebApp Template
 
+![NuGet Version](https://img.shields.io/nuget/v/GiraffeWebApp.Templates)
+
 An opinionated full stack .NET template for the Giraffe F# framework.
 
 ## Guiding Princples
@@ -16,7 +18,7 @@ _In rough order of priority_
   * IO happens at Handler levels
   * Keep business logic pure
 * Stay close to the ASP.NET Core convention
-  * If you're confused about how something works in F#/Giraffe, ideally searching for the way C#/ASP.Net Core does it would help you out.
+  * If you're confused about how something works in F#/Giraffe, ideally searching for the way C#/ASP.Net Core does it should help you out.
 
 ## Technology Choices
 
@@ -56,7 +58,7 @@ To install template from source:
 * Navigate to `src/content/GiraffeWebApp/`
 * Run `dotnet new install ./` to install template
 * Create project from template
-  * `dotnet new giraffewebtemplate --n MyProject`
+  * `dotnet new giraffewebapp --n MyProject`
 
 To uninstall template:
 * Navigate to `src/content/GiraffeWebApp/`
